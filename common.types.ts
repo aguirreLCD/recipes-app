@@ -14,7 +14,9 @@ export type RecipeData = {
   setVeggie: (value: string) => void;
 };
 
-export interface VeggieParams {
+
+
+export type VeggieParams = {
   id: string;
   name: string;
   title: string;
@@ -24,35 +26,7 @@ export interface VeggieParams {
   cuisine: string;
   veggie: Array<string>;
   setVeggie: (value: string) => void;
-}
+};
 
-// interface VeggieData {
-//   id: string;
-//   title: string;
-//   description: string;
-//   image: string;
-//   category: string;
-//   cuisine: string;
-// }
 
-// interface VeggieParams {
-//   id: string;
-//   title: string;
-//   description: string;
-//   image: string;
-//   category: string;
-//   cuisine: string;
-//   veggie: Array<string>;
-//   setVeggie: (value: string) => void;
-// }
 
-// type VeggieParams = {
-//   id: string;
-//   title: string;
-//   description: string;
-//   image: string;
-//   category: string;
-//   cuisine: string;
-//   veggie: Array<string>;
-//   setVeggie: (value: string) => void;
-// };

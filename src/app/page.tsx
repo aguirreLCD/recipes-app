@@ -12,6 +12,7 @@ export default function Home() {
     event.preventDefault();
     push(`/recipe/${value}`);
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="p-4 shadow-md bg-white rounded-md">
