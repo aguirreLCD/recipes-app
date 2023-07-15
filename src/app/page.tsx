@@ -1,4 +1,6 @@
 "use client";
+
+import Veggie from "@/components/Veggie/Veggie";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -34,6 +36,8 @@ export default function Home() {
           </button>
         </form>
       </div>
+
+      <Veggie />
     </div>
   );
 }

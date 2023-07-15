@@ -1,19 +1,7 @@
 import Link from "next/link";
+import { RecipeParams } from "../../../../common.types";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-
-interface RecipeParams {
-  params: { ingredient: string };
-}
-
-// interface RecipeData {
-//   id: string;
-//   title: string;
-//   description: string;
-//   image: string;
-//   category: string;
-//   cuisine: string;
-// }
 
 const getRecipeData = async (ingredient: string) => {
   const res = await fetch(
