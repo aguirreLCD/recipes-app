@@ -46,14 +46,15 @@ Open `http://localhost:3000` with your browser to see the application live runni
 - HTML, CSS, Javascript;
 - TypeScript;
 - Tailwind CSS;
+- Spoonacular API;
 - Git - Github;
-- Subapase;
+- Subapase (Nice to have);
 - Trello;
 - Vercel;
 
 ## Learning topics:
 
-- Create an app with Nextjs starter;
+- Create an app with Nextjs 13 starter;
 - Organize folders and files;
 - Install and use additional libs;
 - Routing in Nextjs: App Router x Page Router;
