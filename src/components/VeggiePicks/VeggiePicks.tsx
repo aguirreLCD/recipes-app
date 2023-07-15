@@ -53,5 +53,7 @@ export default function VeggiePicks(props: veggieTypes) {
         </a>
       </li>
     </ul>
+
+    
   );
 }

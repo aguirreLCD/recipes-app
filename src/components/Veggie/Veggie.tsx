@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import VeggiePicks from "../VeggiePicks/VeggiePicks";
+import VeggieRecipes from "../VeggieRecipes/VeggieRecipes";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -22,7 +23,7 @@ const Veggie = () => {
 
   const getVeggie = async () => {
     let veggie: veggieTypes[] | null;
-    
+
     const check = localStorage.getItem("veggie");
 
     if (check) {
@@ -51,7 +52,7 @@ const Veggie = () => {
         <h2>Veggie Picks</h2>
       </div>
 
-      <div>
+      {/* <div>
         <ul>
           {veggie != null
             ? veggie.map((recipe) => {
@@ -66,7 +67,10 @@ const Veggie = () => {
               })
             : null}
         </ul>
-      </div>
+      </div> */}
+
+      {/* <VeggieRecipes recipes={veggie} /> */}
+      <VeggieRecipes recipes={veggie} />
     </>
   );
 };
