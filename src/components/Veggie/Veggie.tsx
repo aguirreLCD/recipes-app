@@ -2,27 +2,23 @@
 
 import { useEffect, useState } from "react";
 
-import VeggiePicks from "../VeggiePicks/VeggiePicks";
-import VeggieRecipes from "../VeggieRecipes/VeggieRecipes";
+import VeggiRecipes from "../VeggieRecipes/VeggieRecipes";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 interface veggieTypes {
   id: string;
+  image: string;
   title: string;
-  sourceURL: string;
+  sourceUrl: string;
 }
 
-interface dataTypes {
-  data: veggieTypes[] | null;
-  error: object | null;
-}
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
 
   const getVeggie = async () => {
-    let veggie: veggieTypes[] | null;
+    // let veggie: veggieTypes[] | null;
 
     const check = localStorage.getItem("veggie");
 
@@ -30,14 +26,20 @@ const Veggie = () => {
       setVeggie(JSON.parse(check));
     } else {
       if (typeof window !== "undefined") {
-        const api = await fetch(
+        const res = await fetch(
           `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1&tags=vegetarian`
         );
 
-        let data = await api.json();
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
         localStorage.setItem("veggie", JSON.stringify(data.recipes));
         setVeggie(data.recipes);
-        veggie = data;
+        const veggie = data.recipes;
+        // console.log("veggie =>", veggie);
+        return veggie as veggieTypes[];
       }
     }
   };
@@ -45,6 +47,7 @@ const Veggie = () => {
   useEffect(() => {
     getVeggie();
   }, []);
+  // console.log("veggie =>", veggie);
 
   return (
     <>
@@ -52,25 +55,9 @@ const Veggie = () => {
         <h2>Veggie Picks</h2>
       </div>
 
-      {/* <div>
-        <ul>
-          {veggie != null
-            ? veggie.map((recipe) => {
-                return (
-                  <VeggiePicks
-                    key={recipe.id}
-                    id={recipe.id}
-                    title={recipe.title}
-                    sourceUrl={recipe.sourceUrl}
-                  />
-                );
-              })
-            : null}
-        </ul>
-      </div> */}
+    
+      <VeggiRecipes recipes={veggie} />    
 
-      {/* <VeggieRecipes recipes={veggie} /> */}
-      <VeggieRecipes recipes={veggie} />
     </>
   );
 };

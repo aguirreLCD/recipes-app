@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RecipeParams } from "../../../../common.types";
+import { RecipeParams, VeggieRecipe } from "../../../../common.types";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -7,34 +7,28 @@ const getRecipeData = async (ingredient: string) => {
   const res = await fetch(
     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=1&query=${ingredient}`
   );
-  return res.json();
+  const data = await res.json();
+  return data;
 };
 
 async function Recipe({ params }: RecipeParams) {
   const recipeData = getRecipeData(params.ingredient);
 
-  const [recipeInfo] = await Promise.all([recipeData]);
-
-  const recipeSearched = JSON.stringify(recipeInfo);
+  const [recipes]: VeggieRecipe[] = await Promise.all([recipeData]);
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3 p-4">
-      <div className="p-8">
-        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-          <Link href={"/"}>HOME</Link>
-        </div>
-
-        <div className="block mt-1 text-lg leading-tight font-medium text-black">
-          Recipe Info
-        </div>
-
-        <div className="block mt-1 text-lg leading-tight font-medium text-black">
-          {recipeSearched}
-        </div>
-
-        <div className="block mt-1 text-lg leading-tight font-medium text-black"></div>
+    <>
+      <div>
+        <Link href={"/"}>HOME</Link>
       </div>
-    </div>
+
+      <div>
+        <ul>
+          <li key={recipes.results[0].id}>{recipes.results[0].title}</li>
+          <img src={recipes.results[0].image}></img>
+        </ul>
+      </div>
+    </>
   );
 }
 export default Recipe;

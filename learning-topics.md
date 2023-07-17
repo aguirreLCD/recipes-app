@@ -41,3 +41,13 @@ To simplify the decision between Server and Client Components, we recommend usin
 ```
 
 - Use ChatGPT to code overview;
+
+* veggie component calling now veggie recipes component - client server rendering veggie picks
+
+* Error: Invalid src prop (https://spoonacular.com/recipeImages) on `next/image`, hostname "spoonacular.com" is not configured under images in your `next.config.js`
+  See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
+
+____
+# In this new model, we recommend fetching data directly in the component that needs it, even if you're requesting the same data in multiple components, rather than passing the data between components as props.
+
+## We recommend using the server-only package to make sure server data fetching functions are never used on the client.

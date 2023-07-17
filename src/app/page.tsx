@@ -28,7 +28,6 @@ export default function Home() {
             className="w-full p-2 border border-gray-300 rounded text-black"
             placeholder="Type your ingredient:"
           />
-
           <button
             type="submit"
             className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
